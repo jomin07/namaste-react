@@ -40,12 +40,12 @@ const Body = () =>{
   return listOfRestaurants.length === 0 ? <Shimmer /> 
   :(
       <div className="body">
-          <div className="filter">
-              <div className="search">
-                  <input type="text" value={searchText} onChange={(e) =>{
+          <div className="flex m-5 items-center">
+              <div className=" px-3">
+                  <input className=" border border-zinc-950 px-3 py-1" type="text" value={searchText} onChange={(e) =>{
                       setSearchText(e.target.value);
                   }}/>
-                  <button onClick={() =>{
+                  <button className=" ml-3 px-5 py-1 bg-yellow-400 rounded-md" onClick={() =>{
                     console.log("Search Text:", searchText);
 
                     const filteredRests = listOfRestaurants.filter((res) => 
@@ -60,10 +60,10 @@ const Body = () =>{
                   (restaurant) => restaurant.info.avgRating > 4
                 );
                 setListOfRestaurants(filteredList);
-              }} className="filter-btn">Top Rated Restaurants</button>
+              }} className=" ml-7 px-3 py-1 bg-green-400 rounded-md">Top Rated Restaurants</button>
           </div>
 
-          <div className="res-container">
+          <div className="flex flex-wrap">
               {filteredListOfRestaurants.map((restaurant) =>(
                   <Link key={restaurant.info.id} to={`/restaurants/${restaurant.info.id}`}><RestaurantCard resData={restaurant}/></Link>
               ))}
